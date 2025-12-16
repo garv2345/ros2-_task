@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ROS 2 Code Checker & Simulator</title>
+    <style>
+        body { font-family: sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+        .box { border: 1px solid #ccc; padding: 20px; margin-bottom: 20px; border-radius: 8px; background-color: #f9f9f9; }
+        h1 { color: #333; }
+        pre { background: #333; color: #fff; padding: 15px; overflow-x: auto; }
+        button { background-color: #007bff; color: white; padding: 10px 20px; border: none; cursor: pointer; font-size: 16px; }
+        button:hover { background-color: #0056b3; }
+        .success { color: green; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <h1>🤖 ROS 2 Intern Task Tool</h1>
+
+    <div class="box">
+        <h2>1. Code Checker</h2>
+        <p>Upload your ROS package (.zip) to check for syntax and safety errors.</p>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" accept=".zip" required>
+            <button type="submit">Upload & Check</button>
+        </form>
+
+        {% if report %}
+            <h3>Checker Report:</h3>
+            <pre>{{ report }}</pre>
+        {% endif %}
+    </div>
+
+    <div class="box">
+        <h2>2. Simulation Runner</h2>
+        <p>Warning: Ensure Gazebo is already open before clicking.</p>
+        <form action="/simulate" method="post">
+            <button type="submit" style="background-color: #28a745;">Run Simulation ▶</button>
+        </form>
+
+        {% if simulation_status %}
+            <p class="success">{{ simulation_status }}</p>
+        {% endif %}
+    </div>
+
+</body>
+</html>
