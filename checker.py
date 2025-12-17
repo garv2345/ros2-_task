@@ -12,7 +12,6 @@ REPORT_FILE = "report.txt"
 def check_syntax(file_path):
     """Checks Python syntax using python3 -m flake8 (Safer method)."""
     try:
-        # We use sys.executable to ensure we use the same python that is running this script
         cmd = [sys.executable, "-m", "flake8", file_path]
         result = subprocess.run(cmd, capture_output=True, text=True)
         
